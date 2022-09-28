@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" class="w-full h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | NFT preview card component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .mainBg {
+      background-color: hsl(217, 54%, 11%); 
+    }
+
+    .cardBg {
+      background-color: hsl(216, 50%, 16%);
+    }
+
+    .lineColor {
+      background-color: hsl(215, 32%, 27%);
+    }
+
+    .textColor {
+      color: hsl(215, 51%, 70%);
+    }
+
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body class="w-full h-full">
+  <main class="w-full h-full flex flex-col justify-center items-center mainBg">
+    <article class="flex flex-col gap-4 h-[500px] max-w-[300px] cardBg p-4 rounded-lg">
+      <img class="h-[250px] rounded-lg" src="./images/image-equilibrium.jpg" alt="">
+
+      <h1 class="text-white font-bold text-lg">Equilibrium #3429</h1>
+
+      <p class="textColor">Our Equilibrium collection promotes balance and calm.</p>
+    
+      <div class="flex w-full justify-between">
+        <div class="flex gap-2 justify-center items-center">
+          <img class="h-[20px]" src="./images/icon-ethereum.svg" alt="">
+          <p class="text-cyan-400 font-bold">0.041 ETH</p>
+        </div>
+  
+        <div class="flex gap-2 justify-center items-center">
+          <img class="h-[20px]" src="./images/icon-clock.svg" alt="">
+          <p class="text-indigo-300">3 days left</p>
+        </div>
+      </div>
+
+    
+      <hr>
+      <div class="flex gap-2 items-center">
+        <img class="rounded-full border h-[30px]" src="./images/image-avatar.png" alt="">
+        <p class="textColor">Creation of <strong class="text-white">Jules Wyvern</strong> </p>
+      </div>
+    </article>
+
+    <div class="attribution text-white">
+      <p>Styles made with <a href="https://tailwindcss.com/">Tailwind CSS</a>.</p>
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="https://github.com/Willaiem">Willaiem</a>.
+    </div>
+  </main>
+<script src="../.tailwind/tailwind-min.js" defer></script>
+</body>
+</html>
