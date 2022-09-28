@@ -1,4 +1,0 @@
-interactive-rating: 2h
-nft: 20 min (założono 15 min)
-product preview: ok. 40 min (założono 30 min)
-qr-code: założone 10 min
