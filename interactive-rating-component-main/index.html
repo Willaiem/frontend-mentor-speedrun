@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" class="w-full h-full">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link href='https://fonts.googleapis.com/css?family=Overpass:400,700' rel='stylesheet'>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Interactive rating component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+  </style>
+</head>
+
+<body
+  class="w-full h-full bg-slate-900 text-white flex flex-col justify-center items-center font-sans font-['Overpass']">
+  <main class="flex flex-col justify-end gap-6 max-w-sm bg-gray-800 rounded-[30px] h-[400px] p-8">
+
+    <!-- Rating state start -->
+    <div id="rating-state" class="flex flex-col justify-evenly g w-full h-full">
+      <div class="mb-4">
+        <img class="bg-gray-700 rounded-full p-4 mb-8" src="./images/icon-star.svg" alt="">
+
+        <h1 class="text-3xl mb-2 font-bold">How did we do?</h1>
+
+        <p class="text-md text-gray-400">Please let us know how we did with your support request. All feedback is
+          appreciated
+          to help us improve our offering!</p>
+      </div>
+
+
+      <div class="flex gap-5 mb-8">
+        <span
+          class="relative rounded-full bg-gray-700 hover:bg-gray-600  p-6 h-[50px] w-[50px] flex items-center justify-center text-gray-400 cursor-pointer">
+          <label for="one">1</label>
+          <input class="absolute opacity-0 cursor-pointer" type="radio" name="choice" id="one" value="1">
+        </span>
+        <span
+          class="relative rounded-full bg-gray-700 hover:bg-gray-600  p-6 h-[50px] w-[50px] flex items-center justify-center text-gray-400 cursor-pointer">
+          <label for="two">2</label>
+          <input class="absolute opacity-0 cursor-pointer" type="radio" name="choice" id="two" value="2">
+        </span>
+        <span
+          class="relative rounded-full bg-gray-700 hover:bg-gray-600  p-6 h-[50px] w-[50px] flex items-center justify-center text-gray-400 cursor-pointer">
+          <label for="three">3</label>
+          <input class="absolute opacity-0 cursor-pointer" type="radio" name="choice" id="three" value="3">
+        </span>
+        <span
+          class="relative rounded-full bg-gray-700 hover:bg-gray-600  p-6 h-[50px] w-[50px] flex items-center justify-center text-gray-400 cursor-pointer">
+          <label for="four">4</label>
+          <input class="absolute opacity-0 cursor-pointer" type="radio" name="choice" id="four" value="4">
+        </span>
+        <span
+          class="relative rounded-full bg-gray-700 hover:bg-gray-600 p-6 h-[50px] w-[50px] flex items-center justify-center text-gray-400 cursor-pointer">
+          <label for="five">5</label>
+          <input class="absolute opacity-0 cursor-pointer" type="radio" name="choice" id="five" value="5">
+        </span>
+      </div>
+
+      <button id="submit-button"
+        class="uppercase tracking-widest bg-orange-500 rounded-full h-[50px] hover:bg-white hover:text-orange-500">Submit</button>
+    </div>
+
+    <!-- Rating state end -->
+
+    <!-- Thank you state start -->
+
+    <div id="thank-you-state" class="hidden flex flex-col items-center justify-center gap-8">
+      <img src="./images/illustration-thank-you.svg" alt="thank-you-state">
+      <p id="selection" class="rounded-full bg-gray-700 p-2 px-4 text-orange-400">You selected
+        <!-- Add rating here -->nothing out of 5
+      </p>
+
+      <div class="flex flex-col items-center justify-center gap-2">
+        <h1 class="text-3xl font-semibold">Thank you!</h1>
+        <p class="text-center text-gray-400">We appreciate you taking the time to give a rating. If you ever need more
+          support,
+          don’t hesitate to get in touch!</p>
+      </div>
+    </div>
+
+    <!-- Thank you state end -->
+
+
+  </main>
+  <div class="attribution">
+    <p>Styles made with <a href="https://tailwindcss.com/">Tailwind CSS</a>.</p>
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://github.com/Willaiem">Willaiem</a>.
+  </div>
+  <script src="../.tailwind/tailwind-min.js" defer></script>
+  <script defer>
+    const button = document.getElementById('submit-button')
+    const radios = Array.from(document.querySelectorAll('input[type=radio]'))
+
+    window.onload = function () {
+      radios.forEach(radio => {
+        radio.addEventListener('click', (e) => {
+          radios.forEach(r => {
+            const parent = r.parentElement.classList
+
+            if (parent.contains('hover:bg-orange-500')) {
+              parent.toggle('bg-orange-500')
+              parent.toggle('hover:bg-orange-500')
+              parent.toggle('text-black')
+            }
+          })
+
+          e.target.parentElement.classList.toggle('bg-orange-500')
+          e.target.parentElement.classList.toggle('hover:bg-orange-500')
+          e.target.parentElement.classList.toggle('text-black')
+        })
+      })
+    }
+
+    button.addEventListener('click', handleClick)
+
+    function handleClick(e) {
+      radios.forEach(radio => {
+        if (!radio.checked) return
+
+        const ratingStateElement = document.getElementById('rating-state')
+        ratingStateElement.classList.add('hidden')
+
+        const tyElement = document.getElementById('thank-you-state')
+        tyElement.classList.remove('hidden')
+
+        const selectionElement = document.getElementById('selection')
+        const [head, tail] = selectionElement.textContent.split('nothing')
+        selectionElement.textContent = `${head} ${radio.value} ${tail}`
+      })
+    }
+  </script>
+</body>
+
+</html>
